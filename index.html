@@ -272,6 +272,37 @@
   .stat-inline .si b{ display:block; font-family:'Space Grotesk',sans-serif; font-size:1.15rem; color:var(--navy); }
   .stat-inline .si span{ font-size:0.72rem; color:var(--muted); }
   .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+
+  /* ---- Data dashboard ---- */
+  .dash-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:14px; margin:2px 0 22px;
+  }
+  .dash-card{
+    background:var(--paper); border:1px solid #DDE3EC; border-radius:var(--radius-m);
+    padding:16px 18px;
+  }
+  .dash-card .dt{ font-size:0.76rem; font-weight:700; color:var(--navy); margin-bottom:12px; }
+  .donut-wrap{ display:flex; align-items:center; gap:16px; }
+  .donut{ width:76px; height:76px; border-radius:50%; flex-shrink:0; position:relative; }
+  .donut::after{ content:''; position:absolute; inset:12px; background:var(--paper); border-radius:50%; }
+  .donut-center{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.92rem; color:var(--navy);
+  }
+  .donut-legend{ font-size:0.78rem; color:#4A5568; line-height:1.9; }
+  .donut-legend .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; }
+  .hbar-row{ display:flex; align-items:center; gap:8px; margin-bottom:9px; font-size:0.78rem; }
+  .hbar-row:last-child{ margin-bottom:0; }
+  .hbar-label{ width:88px; flex-shrink:0; color:#4A5568; }
+  .hbar-track{ flex:1; height:8px; background:#E3E8EF; border-radius:4px; overflow:hidden; }
+  .hbar-fill{ height:100%; background:var(--teal); border-radius:4px; }
+  .hbar-val{ width:42px; text-align:right; font-weight:600; color:var(--navy); flex-shrink:0; }
+  .dash-note{ font-size:0.74rem; color:var(--muted); margin-top:10px; line-height:1.5; }
+  .fix-flag{
+    display:inline-flex; align-items:center; gap:5px; font-size:0.72rem; color:#8A6416;
+    background:#FBF1DD; border:1px solid #EFDBA6; padding:3px 8px; border-radius:4px; margin-top:10px;
+  }
   .chip{
     font-size:0.78rem; background:var(--paper); border:1px solid #DDE3EC;
     padding:5px 11px; border-radius:4px; color:#4A5568; font-weight:500;
@@ -514,10 +545,10 @@
         <div class="project-visual">
           <div class="ptag">Consumer research · Mumbai · n = 100</div>
           <div class="bars">
-            <i style="height:80%"></i><i style="height:31%"></i><i style="height:31%"></i>
-            <i style="height:37%"></i><i style="height:33%"></i><i style="height:70%"></i>
+            <i style="height:80%"></i><i style="height:57%"></i><i style="height:46%"></i>
+            <i style="height:50%"></i><i style="height:59%"></i><i style="height:41%"></i>
           </div>
-          <div class="fig"><b>80%</b> prefer online over in-store shopping</div>
+          <div class="fig"><b>80%</b> shop online, rest still shop offline</div>
           <div class="fig" style="margin-top:2px; color:#8593AA;">Descriptive research · Random sampling · n = 100</div>
         </div>
         <div class="project-body">
@@ -531,16 +562,76 @@
 
           <div class="stat-inline">
             <div class="si"><b>80%</b><span>Prefer online over offline</span></div>
-            <div class="si"><b>31% / 31%</b><span>Trust Amazon / Flipkart equally</span></div>
             <div class="si"><b>37.5%</b><span>Pay via Cash on Delivery</span></div>
+            <div class="si"><b>31 / 31</b><span>Respondents favor Flipkart / Amazon</span></div>
             <div class="si"><b>50%</b><span>Of shoppers are students</span></div>
+          </div>
+
+          <div class="proj-block">
+            <div class="proj-label">Survey at a glance</div>
+            <div class="dash-grid">
+
+              <div class="dash-card">
+                <div class="dt">Mode of Shopping (n=100)</div>
+                <div class="donut-wrap">
+                  <div class="donut" style="background:conic-gradient(var(--teal) 0% 80%, var(--amber) 80% 100%);"></div>
+                  <div class="donut-legend">
+                    <div><span class="dot" style="background:var(--teal);"></span>Online — 80%</div>
+                    <div><span class="dot" style="background:var(--amber);"></span>Offline — 20%</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dt">Payment Method (of 80 online shoppers)</div>
+                <div class="hbar-row"><span class="hbar-label">Cash on Delivery</span><div class="hbar-track"><div class="hbar-fill" style="width:37.5%"></div></div><span class="hbar-val">37.5%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Credit Card</span><div class="hbar-track"><div class="hbar-fill" style="width:28.75%"></div></div><span class="hbar-val">28.75%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Debit Card</span><div class="hbar-track"><div class="hbar-fill" style="width:25%"></div></div><span class="hbar-val">25%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Net Banking</span><div class="hbar-track"><div class="hbar-fill" style="width:8.75%"></div></div><span class="hbar-val">8.75%</span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dt">How Shoppers Found Online Shopping (of 80)</div>
+                <div class="hbar-row"><span class="hbar-label">Advertisement</span><div class="hbar-track"><div class="hbar-fill" style="width:41.25%"></div></div><span class="hbar-val">41.25%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Friends</span><div class="hbar-track"><div class="hbar-fill" style="width:38.75%"></div></div><span class="hbar-val">38.75%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Others</span><div class="hbar-track"><div class="hbar-fill" style="width:13.75%"></div></div><span class="hbar-val">13.75%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Family</span><div class="hbar-track"><div class="hbar-fill" style="width:6.25%"></div></div><span class="hbar-val">6.25%</span></div>
+                <div class="fix-flag">⚠ Corrected: source report listed Advertisement as 40.25% — recalculated as 33÷80 = 41.25%</div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dt">Shopping Frequency (of 80)</div>
+                <div class="hbar-row"><span class="hbar-label">According to need</span><div class="hbar-track"><div class="hbar-fill" style="width:61.25%"></div></div><span class="hbar-val">61.25%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Once a month</span><div class="hbar-track"><div class="hbar-fill" style="width:18.75%"></div></div><span class="hbar-val">18.75%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Once a year</span><div class="hbar-track"><div class="hbar-fill" style="width:11.25%"></div></div><span class="hbar-val">11.25%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Once a week</span><div class="hbar-track"><div class="hbar-fill" style="width:8.75%"></div></div><span class="hbar-val">8.75%</span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dt">Preferred Category (of 80)</div>
+                <div class="hbar-row"><span class="hbar-label">Clothes</span><div class="hbar-track"><div class="hbar-fill" style="width:28.75%"></div></div><span class="hbar-val">28.75%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Electronics</span><div class="hbar-track"><div class="hbar-fill" style="width:27.5%"></div></div><span class="hbar-val">27.5%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Accessories</span><div class="hbar-track"><div class="hbar-fill" style="width:12.5%"></div></div><span class="hbar-val">12.5%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Books</span><div class="hbar-track"><div class="hbar-fill" style="width:11.25%"></div></div><span class="hbar-val">11.25%</span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dt">Respondent Profile (n=100)</div>
+                <div class="hbar-row"><span class="hbar-label">Male</span><div class="hbar-track"><div class="hbar-fill" style="width:57%"></div></div><span class="hbar-val">57%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Age 21–25</span><div class="hbar-track"><div class="hbar-fill" style="width:46%"></div></div><span class="hbar-val">46%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Students</span><div class="hbar-track"><div class="hbar-fill" style="width:50%"></div></div><span class="hbar-val">50%</span></div>
+                <div class="hbar-row"><span class="hbar-label">Income &lt;₹10k</span><div class="hbar-track"><div class="hbar-fill" style="width:59%"></div></div><span class="hbar-val">59%</span></div>
+              </div>
+
+            </div>
+            <p class="dash-note">Behavioral questions (payment, frequency, category, discovery channel) were asked only to the 80 respondents who shop online — so those figures are read as % of 80, while demographic figures use the full sample of 100.</p>
           </div>
 
           <div class="proj-block">
             <div class="proj-label">Key findings</div>
             <ul>
               <li>Convenience, time savings, product variety, and discounts came out as the strongest drivers of online purchase decisions.</li>
-              <li>Awareness spreads mainly through advertisements (33%) and word-of-mouth from friends (31%) — word-of-mouth matters almost as much as paid ads.</li>
+              <li>Advertisements (41.25%) and word-of-mouth from friends (38.75%) drive most of the awareness — paid marketing and personal referrals matter almost equally.</li>
               <li>Return complications, fear of payment fraud, and the inability to physically inspect products remain the biggest barriers to trust.</li>
             </ul>
           </div>
