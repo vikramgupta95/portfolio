@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikram Kumar Gupta — Data Analytics</title>
+<meta name="description" content="Portfolio of Vikram Kumar Gupta — Data Analytics aspirant skilled in SQL, Excel, Power BI and Python.">
+<style>
+  :root{
+    --navy: #0F1B2D;
+    --panel: #16273F;
+    --panel-line: #263C5C;
+    --paper: #F4F6F9;
+    --ink: #101820;
+    --muted: #7C8BA3;
+    --amber: #E8A33D;
+    --teal: #3FC6C6;
+    --radius-s: 3px;
+    --radius-m: 6px;
+    --maxw: 1040px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .num{
+    font-family:'Space Grotesk', 'IBM Plex Sans', sans-serif;
+    margin:0;
+    color:inherit;
+  }
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+  ::selection{ background:var(--amber); color:var(--navy); }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,246,249,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid #DDE3EC;
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+    text-decoration:none; color:var(--navy);
+  }
+  .brand span{ color:var(--amber); }
+  .navlinks{ display:flex; gap:28px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    text-decoration:none; font-size:0.92rem; color:var(--navy);
+    padding-bottom:3px; border-bottom:2px solid transparent;
+    transition:border-color .15s ease;
+  }
+  .navlinks a:hover{ border-color:var(--amber); }
+  .navtoggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .navtoggle span, .navtoggle span::before, .navtoggle span::after{
+    display:block; width:22px; height:2px; background:var(--navy); position:relative; transition:.2s;
+  }
+  .navtoggle span::before, .navtoggle span::after{ content:''; position:absolute; }
+  .navtoggle span::before{ top:-7px; } .navtoggle span::after{ top:7px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--navy);
+    color:#EDF1F7;
+    overflow:hidden;
+    border-bottom:1px solid var(--panel-line);
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size:38px 38px;
+    mask-image:linear-gradient(to bottom, black, transparent 85%);
+  }
+  .hero-inner{
+    position:relative;
+    padding:88px 0 56px;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:40px;
+    align-items:end;
+  }
+  .badge-open{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:0.8rem; color:#8FE3A8; background:rgba(63,198,131,0.12);
+    border:1px solid rgba(63,198,131,0.35); border-radius:20px;
+    padding:5px 13px; margin-bottom:18px; font-weight:600;
+  }
+  .eyebrow{
+    font-size:0.85rem; color:var(--amber); font-weight:600;
+    margin-bottom:14px; letter-spacing:0.02em;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 5vw, 3.4rem);
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .hero .role{
+    margin-top:14px;
+    font-size:1.15rem;
+    color:#B9C4D6;
+    max-width:46ch;
+  }
+  .hero-meta{
+    margin-top:26px;
+    display:flex; flex-wrap:wrap; gap:16px 24px;
+    font-size:0.88rem; color:#9FADC4;
+  }
+  .hero-meta a{ text-decoration:none; }
+  .hero-meta a:hover{ color:var(--amber); }
+  .hero-cta{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-block; padding:11px 22px;
+    border-radius:var(--radius-s);
+    font-size:0.92rem; font-weight:600;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform .12s ease, background .15s ease;
+  }
+  .btn-primary{ background:var(--amber); color:var(--navy); }
+  .btn-primary:hover{ transform:translateY(-1px); }
+  .btn-ghost{ border-color:#3A4B66; color:#EDF1F7; }
+  .btn-ghost:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* stat dial panel */
+  .stat-panel{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:var(--radius-m);
+    padding:26px;
+  }
+  .stat-panel-title{
+    font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--muted); margin-bottom:18px; font-weight:600;
+  }
+  .stat-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:11px 0; border-bottom:1px solid var(--panel-line);
+  }
+  .stat-row:last-child{ border-bottom:none; }
+  .stat-row .num{ font-size:1.5rem; font-weight:600; color:var(--teal); }
+  .stat-row .label{ font-size:0.85rem; color:#AEB9CC; }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:64px 0; }
+  .section-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:34px;
+  }
+  .section-head .idx{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.85rem; color:var(--amber); font-weight:600;
+  }
+  .section-head h2{ font-size:1.6rem; font-weight:600; }
+  .section-sub{ color:var(--muted); font-size:0.95rem; margin-top:6px; max-width:60ch; }
+
+  /* ---- About / objective ---- */
+  #about{ background:#fff; border-top:1px solid #E3E8EF; border-bottom:1px solid #E3E8EF; }
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; }
+  .objective{ font-size:1.08rem; color:#33404F; max-width:56ch; }
+  .about-facts{ list-style:none; margin:22px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .about-facts li{ font-size:0.92rem; color:var(--muted); display:flex; gap:10px; }
+  .about-facts li::before{ content:'—'; color:var(--amber); }
+
+  .hobby-tags{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
+  .hobby-tags span{
+    font-size:0.82rem; background:var(--paper); border:1px solid #DDE3EC;
+    padding:6px 12px; border-radius:20px; color:#4A5568;
+  }
+
+  /* ---- Education timeline (real sequence -> numbered ok) ---- */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{
+    content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
+    background:#DDE3EC;
+  }
+  .tl-item{ position:relative; padding-bottom:32px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:''; position:absolute; left:-28px; top:5px; width:11px; height:11px;
+    border-radius:50%; background:#fff; border:2px solid var(--amber);
+  }
+  .tl-item .when{ font-size:0.82rem; color:var(--muted); font-weight:600; }
+  .tl-item h3{ font-size:1.05rem; margin-top:4px; }
+  .tl-item .org{ font-size:0.92rem; color:#4A5568; margin-top:2px; }
+  .tl-item .extra{ font-size:0.85rem; color:var(--muted); margin-top:4px; }
+
+  /* ---- Experience ---- */
+  #experience{ background:var(--paper); }
+  .exp-card{
+    background:#fff; border:1px solid #E3E8EF; border-radius:var(--radius-m);
+    padding:28px 30px;
+  }
+  .exp-head{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .exp-head h3{ font-size:1.15rem; }
+  .exp-head .org{ color:var(--muted); font-size:0.9rem; margin-top:3px; }
+  .exp-head .when{ font-size:0.85rem; color:var(--muted); white-space:nowrap; }
+  .exp-card ul{ margin:0; padding-left:20px; color:#33404F; font-size:0.95rem; }
+  .exp-card li{ margin-bottom:7px; }
+
+  /* ---- Projects ---- */
+  #projects{ background:#fff; border-top:1px solid #E3E8EF; border-bottom:1px solid #E3E8EF; }
+  .project-card{
+    border:1px solid #E3E8EF; border-radius:var(--radius-m);
+    overflow:hidden; display:grid; grid-template-columns:0.9fr 1.1fr;
+  }
+  .project-visual{
+    background:var(--navy);
+    padding:26px;
+    display:flex; flex-direction:column; justify-content:center;
+    gap:16px;
+    position:relative;
+  }
+  .project-visual .ptag{ color:var(--amber); font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+  .bars{ display:flex; align-items:flex-end; gap:8px; height:90px; }
+  .bars i{ flex:1; background:linear-gradient(to top, var(--teal), #6FE1E1); border-radius:2px 2px 0 0; display:block; }
+  .project-visual .fig{ color:#EDF1F7; font-size:0.85rem; }
+  .project-visual .fig b{ color:var(--teal); font-family:'Space Grotesk',sans-serif; font-size:1.1rem; }
+
+  .project-body{ padding:28px 30px; }
+  .project-body h3{ font-size:1.2rem; margin-bottom:10px; }
+  .project-body ul{ margin:0 0 16px; padding-left:20px; font-size:0.93rem; color:#33404F; }
+  .project-body li{ margin-bottom:7px; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-size:0.78rem; background:var(--paper); border:1px solid #DDE3EC;
+    padding:5px 11px; border-radius:4px; color:#4A5568; font-weight:500;
+  }
+
+  /* ---- Skills ---- */
+  #skills{ background:var(--paper); }
+  .skill-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:14px;
+  }
+  .skill-card{
+    background:#fff; border:1px solid #E3E8EF; border-radius:var(--radius-m);
+    padding:18px; text-align:left;
+  }
+  .skill-card .lvl{ height:4px; border-radius:2px; background:#E3E8EF; margin-top:12px; overflow:hidden; }
+  .skill-card .lvl i{ display:block; height:100%; background:var(--teal); }
+  .skill-card .name{ font-size:0.92rem; font-weight:600; color:var(--navy); }
+
+  /* ---- Contact ---- */
+  #contact{ background:var(--navy); color:#EDF1F7; }
+  #contact .section-head h2{ color:#EDF1F7; }
+  #contact .section-sub{ color:#9FADC4; }
+  .contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:8px; }
+  .contact-card{
+    border:1px solid var(--panel-line); border-radius:var(--radius-m);
+    padding:20px; text-decoration:none; color:inherit;
+    transition:border-color .15s ease;
+  }
+  .contact-card:hover{ border-color:var(--amber); }
+  .contact-card .k{ font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--amber); font-weight:600; }
+  .contact-card .v{ margin-top:8px; font-size:0.95rem; word-break:break-word; }
+
+  footer{ text-align:center; padding:26px; font-size:0.82rem; color:var(--muted); background:var(--navy); border-top:1px solid var(--panel-line); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px){
+    .navlinks{
+      position:absolute; top:64px; left:0; right:0; background:var(--paper);
+      flex-direction:column; padding:16px 28px; border-bottom:1px solid #DDE3EC;
+      display:none; gap:14px;
+    }
+    .navlinks.open{ display:flex; }
+    .navtoggle{ display:block; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .about-grid{ grid-template-columns:1fr; gap:30px; }
+    .project-card{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">Vikram<span>.</span>Gupta</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#strengths">Strengths</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="badge-open">● Open to Data Analytics roles</div>
+        <div class="eyebrow">Data Analytics Aspirant</div>
+        <h1>Vikram Kumar Gupta</h1>
+        <p class="role">I turn raw, messy data into clear decisions. Trained in SQL, Excel, Power BI and Python — with real-world practice conducting research, cleaning data, and quality-checking AI output for accuracy.</p>
+        <div class="hero-meta">
+          <span>📍 Naigaon, Maharashtra</span>
+          <a href="tel:+919511076454">📞 +91 95110 76454</a>
+          <a href="mailto:vg911889@gmail.com">✉ vg911889@gmail.com</a>
+          <a href="https://linkedin.com/in/vikram91/" target="_blank" rel="noopener">🔗 linkedin.com/in/vikram91</a>
+        </div>
+        <div class="hero-cta">
+          <a href="Vikram_Kumar_Gupta_Resume.pdf" class="btn btn-primary" download>Download Resume</a>
+          <a href="#projects" class="btn btn-ghost">See my project</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="stat-panel">
+        <div class="stat-panel-title">Snapshot</div>
+        <div class="stat-row"><span class="label">CGPA — BCA (Data Analytics)</span><span class="num">8.94</span></div>
+        <div class="stat-row"><span class="label">Survey responses analyzed</span><span class="num">100</span></div>
+        <div class="stat-row"><span class="label">AI Model Trainer — months</span><span class="num">8</span></div>
+        <div class="stat-row"><span class="label">Core tools</span><span class="num">6</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head"><span class="idx">About</span><h2>Professional Summary</h2></div>
+        <p class="objective">Data Analytics graduate with a strong academic foundation (8.94 CGPA) and hands-on experience turning raw survey data into clear, decision-ready insight. Eight months spent quality-checking AI-generated content sharpened an already careful, detail-first way of working. Now looking to bring that same rigor to a Data Analytics role — with SQL, Excel, Power BI and Python as the core toolkit.</p>
+        <ul class="about-facts">
+          <li>Currently pursuing MCA at IEC College of Engineering and Technology (2025–2027)</li>
+          <li>Completed BCA in Data Analytics from Amity University with 8.94 CGPA</li>
+          <li>8 months of experience reviewing and correcting AI model outputs at Outlier</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-head"><span class="idx">Beyond work</span><h2>Hobbies</h2></div>
+        <p style="color:#4A5568; font-size:0.95rem;">When I'm away from spreadsheets and dashboards:</p>
+        <div class="hobby-tags">
+          <span>♟ Playing Chess</span>
+          <span>🍳 Cooking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="strengths" style="background:#fff; border-top:1px solid #E3E8EF;">
+    <div class="wrap">
+      <div class="section-head"><span class="idx">Why me</span><h2>Key Strengths</h2></div>
+      <div class="skill-grid" style="grid-template-columns:repeat(auto-fit, minmax(220px,1fr));">
+        <div class="skill-card">
+          <div class="name">Detail-obsessed</div>
+          <p style="font-size:0.87rem; color:var(--muted); margin-top:8px;">Months spent fact-checking AI output built a habit of catching errors others miss — the same instinct that keeps a dataset clean.</p>
+        </div>
+        <div class="skill-card">
+          <div class="name">Analytical thinker</div>
+          <p style="font-size:0.87rem; color:var(--muted); margin-top:8px;">Comfortable moving from a raw questionnaire to charts and percentages that actually explain consumer behavior.</p>
+        </div>
+        <div class="skill-card">
+          <div class="name">Tool-ready</div>
+          <p style="font-size:0.87rem; color:var(--muted); margin-top:8px;">Already fluent in the everyday analyst stack — SQL, Excel, and Power BI — with Python for the basics.</p>
+        </div>
+        <div class="skill-card">
+          <div class="name">Fast learner</div>
+          <p style="font-size:0.87rem; color:var(--muted); margin-top:8px;">Balancing an MCA with practical project work and a part-time role — used to picking up new tools quickly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head"><span class="idx">01</span><h2>Education</h2></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="when">2025 – 2027 · Pursuing</div>
+          <h3>Master of Computer Applications (MCA)</h3>
+          <div class="org">IEC College of Engineering and Technology</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">2022 – 2025</div>
+          <h3>Bachelor of Computer Applications — Data Analytics (BCA)</h3>
+          <div class="org">Amity University</div>
+          <div class="extra">CGPA: 8.94</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head"><span class="idx">02</span><h2>Experience</h2></div>
+      <div class="exp-card">
+        <div class="exp-head">
+          <div>
+            <h3>AI Model Trainer</h3>
+            <div class="org">Outlier</div>
+          </div>
+          <div class="when">Feb 2025 – Sep 2025</div>
+        </div>
+        <ul>
+          <li>Verified the correctness of AI-generated responses through independent, structured online research.</li>
+          <li>Delivered detailed feedback and corrections that directly improved response quality.</li>
+          <li>Carried out data labeling and annotation to support model training pipelines.</li>
+          <li>Strengthened overall output accuracy and reliability through consistent quality checks.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><span class="idx">03</span><h2>Project</h2></div>
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="ptag">Consumer research</div>
+          <div class="bars">
+            <i style="height:38%"></i><i style="height:64%"></i><i style="height:52%"></i>
+            <i style="height:90%"></i><i style="height:71%"></i><i style="height:45%"></i>
+          </div>
+          <div class="fig"><b>100</b> structured questionnaire responses</div>
+        </div>
+        <div class="project-body">
+          <h3>Behavioral Analysis of Online Shopping</h3>
+          <ul>
+            <li>Conducted a study to understand consumer behavior using a structured questionnaire (100 responses).</li>
+            <li>Collected, organized, and analyzed data using percentage methods and charts.</li>
+            <li>Identified key factors influencing online shopping — convenience, discounts, product variety, and preferred platforms.</li>
+            <li>Analyzed consumer preferences for payment methods, and observed trust and security concerns.</li>
+            <li>Built a practical understanding of data analysis and visualization concepts along the way.</li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Survey Design</span>
+            <span class="chip">Excel</span>
+            <span class="chip">Data Visualization</span>
+            <span class="chip">Percentage Analysis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><span class="idx">04</span><h2>Technical Skills</h2></div>
+      <div class="skill-grid">
+        <div class="skill-card"><div class="name">SQL</div><div class="lvl"><i style="width:78%"></i></div></div>
+        <div class="skill-card"><div class="name">Power BI</div><div class="lvl"><i style="width:75%"></i></div></div>
+        <div class="skill-card"><div class="name">Excel</div><div class="lvl"><i style="width:85%"></i></div></div>
+        <div class="skill-card"><div class="name">Python (Basic)</div><div class="lvl"><i style="width:55%"></i></div></div>
+        <div class="skill-card"><div class="name">Data Visualization</div><div class="lvl"><i style="width:80%"></i></div></div>
+        <div class="skill-card"><div class="name">Problem Solving</div><div class="lvl"><i style="width:88%"></i></div></div>
+        <div class="skill-card"><div class="name">Critical Thinking</div><div class="lvl"><i style="width:88%"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head"><span class="idx">05</span><h2>Let's work together</h2></div>
+      <p class="section-sub">Open to Data Analytics internships and entry-level roles — happy to walk through my project, skills, or resume on a quick call.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:vg911889@gmail.com">
+          <div class="k">Email</div><div class="v">vg911889@gmail.com</div>
+        </a>
+        <a class="contact-card" href="tel:+919511076454">
+          <div class="k">Phone</div><div class="v">+91 95110 76454</div>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/vikram91/" target="_blank" rel="noopener">
+          <div class="k">LinkedIn</div><div class="v">linkedin.com/in/vikram91</div>
+        </a>
+        <div class="contact-card" style="cursor:default;">
+          <div class="k">Location</div><div class="v">Naigaon, Maharashtra</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Vikram Kumar Gupta. Built with care.</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
